@@ -23,23 +23,33 @@ STOP_WORDS = ['style', 'script']
 
 
 def sort_by_similarity(cur_url):
+    """Отсортировать строчки по схожести с анализируемым URL'ом."""
     return SequenceMatcher(None, cur_url, URL).ratio()
 
 
 def get_second(array):
+    """Получить второй элемент в массиве"""
     return array[1]
 
 
 def get_third(array):
+    """Получить третий элемент в массиве"""
     return array[2]
 
 
 def unflatten(list_of_lists):
+    """
+    Развернуть лист листов в лист
+    """
     return [val for sublist in list_of_lists for val in sublist]
 
 
-## From: https://stackoverflow.com/questions/44798715/how-to-do-a-breadth-first-search-easily-with-beautiful-soup
 def bfs(soup, depth=0):
+    """
+    BFS на BeautifulSoup'ном дереве
+    Код из:
+    https://stackoverflow.com/questions/44798715/how-to-do-a-breadth-first-search-easily-with-beautiful-soup
+    """
     text_array = []  # (depth, DOM-way, text)
     link_array = []  # http-links
     queue = [([], soup, depth)]  # queue of (path, element, depth) pairs
@@ -211,7 +221,6 @@ class Page():
         significant_tags = list(filter(lambda x: x[1] > 5, sorted(compressed_tags, key=lambda tup: -tup[1])))
         self.probable_tables = []
         for tag, _ in significant_tags:
-            print(tag)
             self.probable_tables.append(self.soup.select(tag))
 
 
@@ -219,6 +228,15 @@ def parse_args():
     """
     Parse command line arguments.
     """
+
+    global URL
+    global DIR
+    global POSTFIX_NAME
+    global ENCODING
+    global N_TO_CROSS_CHECK
+    global PAGES_DELETE_CUTOFF
+    global SAME_DELETE_CUTOFF
+
     parser = argparse.ArgumentParser()
     # URL = 'https://news.mit.edu/'
     # URL = 'https://www.ozon.ru/category/hokkey-11232/'
@@ -233,16 +251,16 @@ def parse_args():
 
     filtration_group = parser.add_argument_group("Параметры")
     filtration_group.add_argument("-ncc", "--n_to_cross_check",
-                                  help="Сколько ссылок мы возьмем для поиска похожих (мусорных) кусков."
+                                  help="Сколько ссылок мы возьмем для поиска похожих (мусорных) кусков.\n"
                                        "0 <= ncc <= 15", type=int,
                                   default=8)
     filtration_group.add_argument("-pdc", "--pages_delete_cutoff",
-                                  help="Удалить текст, который представлен в такой части страниц."
+                                  help="Удалить текст, который представлен в такой части страниц.\n"
                                        "0 <= pdc <= 1", type=float,
                                   default=0.75)
     filtration_group.add_argument("-sdc", "--same_delete_cutoff",
                                   help="Удалить текст, который встречается на странице больше,"
-                                       "чем это число раз (для кнопок и тд)."
+                                       "чем это число раз (для кнопок и тд).\n"
                                        "0 <= sdc",
                                   type=int, default=4)
     args = parser.parse_args()
@@ -250,11 +268,11 @@ def parse_args():
     ## HERE ARE THE PARAMETERS
     URL = args.url
     DIR = args.dir
-    POSTFIX_NAME = args.out
-    ENCODING = args.enc
-    N_TO_CROSS_CHECK = min(max(0, args.ncc), 15)
-    PAGES_DELETE_CUTOFF = min(max(0, args.pdc), 1)
-    SAME_DELETE_CUTOFF = max(0, args.sdc)
+    POSTFIX_NAME = args.postfix_name
+    ENCODING = args.encoding
+    N_TO_CROSS_CHECK = min(max(0, args.n_to_cross_check), 15)
+    PAGES_DELETE_CUTOFF = min(max(0, args.pages_delete_cutoff), 1)
+    SAME_DELETE_CUTOFF = max(0, args.same_delete_cutoff)
 
 
 def main():
@@ -319,7 +337,7 @@ def main():
         table_file = save_text(json_text, DIR, f'raw_table_{index}', POSTFIX_NAME, format='json')
         print(f'html-текст с возможной таблицей сохранен в: {table_file}')
 
-    print('Спасибо за пользование тулом!\nПодписывайтесь в соц сетях по нику:\n@TohaRhymes или @Toha_Rhymes')
+    print('\nСпасибо за пользование тулом!\nПодписывайтесь в соц сетях по нику:\n@TohaRhymes или @Toha_Rhymes')
 
 
 if __name__ == '__main__':
