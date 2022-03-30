@@ -1,0 +1,247 @@
+[
+  {
+    'li': [
+      {
+        'a': {
+          'text': 'School of Architecture and Planning',
+          'attributes': {
+            'class': [
+              'site-footer--news-by-schools--link'
+            ],
+            'href': '/school/architecture-and-planning'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--news-by-schools--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'School of Engineering',
+          'attributes': {
+            'class': [
+              'site-footer--news-by-schools--link'
+            ],
+            'href': '/school/engineering'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--news-by-schools--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'School of Humanities, Arts, and Social Sciences',
+          'attributes': {
+            'class': [
+              'site-footer--news-by-schools--link'
+            ],
+            'href': '/school/humanities-arts-and-social-sciences'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--news-by-schools--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'MIT Sloan School of Management',
+          'attributes': {
+            'class': [
+              'site-footer--news-by-schools--link'
+            ],
+            'href': '/school/management'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--news-by-schools--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'School of Science',
+          'attributes': {
+            'class': [
+              'site-footer--news-by-schools--link'
+            ],
+            'href': '/school/science'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--news-by-schools--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'MIT Schwarzman College of Computing',
+          'attributes': {
+            'class': [
+              'site-footer--news-by-schools--link'
+            ],
+            'href': '/school/mit-schwarzman-college-computing'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--news-by-schools--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'About the MIT News Office',
+          'attributes': {
+            'class': [
+              'site-footer--resources--link'
+            ],
+            'href': '/mit-news-office/about'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--resources--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'MIT News Press Center',
+          'attributes': {
+            'class': [
+              'site-footer--resources--link'
+            ],
+            'href': '/press'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--resources--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'Terms of Use',
+          'attributes': {
+            'class': [
+              'site-footer--resources--link'
+            ],
+            'href': '/terms-of-use'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--resources--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'Press Inquiries',
+          'attributes': {
+            'class': [
+              'site-footer--resources--link'
+            ],
+            'href': '/press/inquiries'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--resources--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'Filming Guidelines',
+          'attributes': {
+            'class': [
+              'site-footer--resources--link'
+            ],
+            'href': '/press/filming-guidelines'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--resources--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'RSS Feeds',
+          'attributes': {
+            'class': [
+              'site-footer--resources--link'
+            ],
+            'href': '/rss'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--resources--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'Subscribe to MIT Daily/Weekly',
+          'attributes': {
+            'class': [
+              'site-footer--cta--link'
+            ],
+            'href': 'http://web.mit.edu/mit-daily-weekly/',
+            'target': '_blank'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--cta--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'Subscribe to press releases',
+          'attributes': {
+            'class': [
+              'site-footer--cta--link'
+            ],
+            'href': '/press/subscribe-to-press-releases'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--cta--link-item'
+          ]
+        }
+      },
+      {
+        'a': {
+          'text': 'Submit campus news',
+          'attributes': {
+            'class': [
+              'site-footer--cta--link'
+            ],
+            'href': '/user/login?destination=news-submission'
+          }
+        },
+        'attributes': {
+          'class': [
+            'site-footer--cta--link-item'
+          ]
+        }
+      }
+    ]
+  }
+]

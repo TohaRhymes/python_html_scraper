@@ -1,0 +1,566 @@
+[
+  {
+    'span': [
+      {
+        'text': 'Электроника',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Одежда',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Обувь',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Дом и сад',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Детские товары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Красота и здоровье',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Бытовая техника',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Спорт и отдых',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Строительство и ремонт',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Продукты питания',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Аптека',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Товары для животных',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Книги',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Туризм, рыбалка, охота',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Автотовары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Мебель',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Хобби и творчество',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Ювелирные украшения',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Аксессуары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Игры и консоли',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Канцелярские товары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Товары для взрослых',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Антиквариат и коллекционирование',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Цифровые товары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Бытовая химия и гигиена',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Ozon fresh',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Музыка и видео',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Автомобили и мототехника',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Электронные сигареты и товары для курения',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'text': 'Уценённые товары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/b3/t27/icon_prem_icon.png);'
+        }
+      },
+      {
+        'text': 'Ozon Premium',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/90/tdc/logoglobal.png);'
+        }
+      },
+      {
+        'text': 'Ozon Global',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/81/tb8/_6logo.png);'
+        }
+      },
+      {
+        'text': 'Товары в Рассрочку',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/a7/td8/sert.png);'
+        }
+      },
+      {
+        'text': 'Подарочные сертификаты',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/eb/tdb/card_2.png);'
+        }
+      },
+      {
+        'text': 'Ozon Счёт',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/86/t6e/osago.png);'
+        }
+      },
+      {
+        'text': 'Страхование ОСАГО',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/66/t02/ref_icon.svg);'
+        }
+      },
+      {
+        'text': 'Продавайте на Ozon',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/2a/ta3/icon_airplane_24x24.svg);'
+        }
+      },
+      {
+        'text': 'Ozon Travel',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/73/t83/icon_healthy_leaf.png);'
+        }
+      },
+      {
+        'text': 'Оzon ЗОЖ',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/0b/t19/megaphone.svg);'
+        }
+      },
+      {
+        'text': 'Для меня',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/53/te3/icon_catalog_desktop.svg);'
+        }
+      },
+      {
+        'text': 'Ozon Merch',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/cc/t7e/legalentitycopy2x.png);'
+        }
+      },
+      {
+        'text': 'Ozon для бизнеса',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/30/t0e/icons-1.png);'
+        }
+      },
+      {
+        'text': 'Ozon Клуб',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/a5/t1b/live_icon_app_3x.png);'
+        }
+      },
+      {
+        'text': 'Ozon Live',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/fc/tb1/mc300_300_1.png);'
+        }
+      },
+      {
+        'text': 'Мамам и малышам',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/27/t6c/120x120_retail.svg);'
+        }
+      },
+      {
+        'text': 'Товары Ozon',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/aa/t7f/blagoheart.png);'
+        }
+      },
+      {
+        'text': 'Ozon Забота',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/d7/tfe/32x32-eco.png);'
+        }
+      },
+      {
+        'text': 'Экотовары',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/f9/tc3/150x150_i2.png);'
+        }
+      },
+      {
+        'text': 'Доставка от 2 часов',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      },
+      {
+        'attributes': {
+          'class': [
+            'g3c'
+          ],
+          'style': 'background-image:url(https://cdn1.ozone.ru/s3/cms/28/tc4/sales_png.png);'
+        }
+      },
+      {
+        'text': 'Акции',
+        'attributes': {
+          'class': [
+            'c3g'
+          ]
+        }
+      }
+    ]
+  }
+]

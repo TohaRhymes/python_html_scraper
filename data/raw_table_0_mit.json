@@ -1,0 +1,153 @@
+[
+  {
+    'a': [
+      {
+        'text': 'Machine learning',
+        'attributes': {
+          'href': '/topic/machine-learning',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Social justice',
+        'attributes': {
+          'href': '/topic/social-justice',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Startups',
+        'attributes': {
+          'href': '/topic/startups',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Black holes',
+        'attributes': {
+          'href': '/topic/black-holes',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Classes and programs',
+        'attributes': {
+          'href': '/topic/classes-and-programs',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Aeronautics and Astronautics',
+        'attributes': {
+          'href': '/department/aeronautics-and-astronautics',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Brain and Cognitive Sciences',
+        'attributes': {
+          'href': '/department/brain-and-cognitive-sciences',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Architecture',
+        'attributes': {
+          'href': '/department/architecture',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Political Science',
+        'attributes': {
+          'href': '/department/political-science',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Mechanical Engineering',
+        'attributes': {
+          'href': '/department/mechanical-engineering',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Abdul Latif Jameel Poverty Action Lab (J-PAL)',
+        'attributes': {
+          'href': '/clp/abdul-latif-jameel-poverty-action-lab-j-pal',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Picower Institute for Learning and Memory',
+        'attributes': {
+          'href': '/clp/picower-institute',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Media Lab',
+        'attributes': {
+          'href': '/clp/media-lab',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Lincoln Laboratory',
+        'attributes': {
+          'href': '/clp/lincoln-laboratory',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Haystack Group',
+        'attributes': {
+          'href': '/clp/haystack-group',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'School of Architecture + Planning',
+        'attributes': {
+          'href': '/school/architecture-and-planning',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'School of Engineering',
+        'attributes': {
+          'href': '/school/engineering',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'School of Humanities, Arts, and Social Sciences',
+        'attributes': {
+          'href': '/school/humanities-arts-and-social-sciences',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'Sloan School of Management',
+        'attributes': {
+          'href': '/school/management',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'School of Science',
+        'attributes': {
+          'href': '/school/science',
+          'hreflang': 'en'
+        }
+      },
+      {
+        'text': 'MIT Schwarzman College of Computing',
+        'attributes': {
+          'href': '/school/mit-schwarzman-college-computing',
+          'hreflang': 'en'
+        }
+      }
+    ]
+  }
+]
