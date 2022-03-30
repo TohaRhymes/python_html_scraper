@@ -1,14 +1,17 @@
 from urllib.request import urlopen
 from urllib.error import URLError
 from bs4 import BeautifulSoup
+from bs2json import bs2json
 import validators
 from difflib import SequenceMatcher
 from os.path import join
 from collections import Counter
 
-## HERE ARE PARAMETERS
-URL = 'https://www.ozon.ru/highlight/globalpromo/'  # url с которым будем работать
-PREFIX_NAME = 'ozon_save'  # префикс для файла, в который сохранять будем
+## HERE ARE THE PARAMETERS
+URL = 'https://news.mit.edu/'
+URL = 'https://www.ozon.ru/category/hokkey-11232/'  # url с которым будем работать
+POSTFIX_NAME = 'mit_save'
+POSTFIX_NAME = 'ozon_save'  # префикс для файла, в который сохранять будем
 ENCODING = 'utf-8'  # кодировка, e.g. ['utf-8', 'cp1251']
 N_TO_CROSS_CHECK = 8  # сколько ссылок мы возьмем для поиска похожих
 PAGES_DELETE_CUTOFF = 0.7  # удалить текст, который представлен в такой части страниц
@@ -57,7 +60,7 @@ def bfs(soup, depth=0):
             except KeyError:
                 pass
         if element.string and element.string != '\n' and all([node not in STOP_WORDS for node in path]):
-            text_array.append((cur_depth, '/'.join(map(str, path)), element.string.strip()))
+            text_array.append((cur_depth, ' '.join(map(str, path)), element.string.strip()))
             pass
     return text_array, list(set(link_array))
 
@@ -81,18 +84,30 @@ def compress_tags(tags):
     return count_neighbours
 
 
+def save_text(text, dir, prefix, postfix, format='txt'):
+    file_name = join(dir, f'{prefix}_{postfix}.{format}')
+    with open(file_name, 'w') as out_file:
+        out_file.write(text)
+    return file_name
+
+
 class Page():
     def __init__(self, url, encoding='utf-8'):
-        self.probable_tables = None
-        self.html_text = None
-        self.soup = None
-        self.encoding = encoding
-        self.link_array = None
-        self.text_array = None
-        self.filtered_text_array = None
-        self.url = url
+        self.url = url  # ссылка, с которой работаем
+        self.html_text = None  # сырой html-текст
+        self.soup = None  # BS-объект
+        self.encoding = encoding  # используемая кодировка страницы
+        self.link_array = None  # ссылки, находящиеся на этой странице
+        self.text_array = None  # массив текстов (всех)
+        self.filtered_text_array = None  # отфильтрованный массив текстов
+        self.probable_tables = None  # массив с возможными таблицами
 
     def __read_html(self):
+        """
+        Служебная функция.
+
+        Просто прочитать и сохранить html-ку
+        """
         try:
             self.html_text = urlopen(self.url).read().decode(self.encoding)
         except URLError:
@@ -100,17 +115,36 @@ class Page():
         return self.html_text
 
     def __make_soup(self):
+        """
+        Служебная функция.
+
+        Делаем супчик.
+
+        :return: BeautifulSoup Object
+        """
         self.soup = BeautifulSoup(self.html_text, "html.parser")  ## мб 'html5lib'
         return self.soup
 
     def __extract_info(self):
+        """
+        Служебная функция.
+
+        Прохоимся поиском в ширину и извлекаем весь текст и все ссылки
+        (в ширину - чтобы еще помнить уровень вложенности каждого текста).
+
+        :return: массив строк и массив ссылок
+        """
         self.text_array, self.link_array = bfs(self.soup)
         return self.text_array, self.link_array
 
-    # доп функция - убрать "мусорные" куски текста - те,
-    # которые повторяются на многих страницах сайта.
-    # Скорее всего это всякие хедеры и т.д.
     def __filter_common(self):
+        """
+        Служебная функция.
+
+        Доп функция - убрать "мусорные" куски текста - те,
+        Которые повторяются на многих страницах сайта.
+        Скорее всего это всякие хедеры и т.д.
+        """
         self.link_array.sort(key=sort_by_similarity, reverse=True)
         inner_link_texts = [list(map(get_third, set(self.text_array)))]
         for link in self.link_array[:N_TO_CROSS_CHECK]:
@@ -124,14 +158,30 @@ class Page():
         self.filtered_text_array = list(
             filter(lambda text: get_third(text) not in all_texts_to_delete, self.text_array))
 
-    # еще удалю куски, которые повторяются (обычно это названия кнопок и тому подобная фигня)
     def __filter_garbage(self):
+        """
+        Служебная функция.
+
+        Еще одна функция для фильтрации.
+        Удаляет куски, которые повторяются,
+        (обычно это названия кнопок и тому подобная фигня)
+        """
         text_counter = Counter(list(map(get_third, self.text_array)))
         texts_to_delete = list(dict(filter(lambda x: x[1] > SAME_DELETE_CUTOFF, text_counter.items())).keys())
         self.filtered_text_array = list(
             filter(lambda text: get_third(text) not in texts_to_delete, self.filtered_text_array))
 
     def read_url_return_info(self, to_filter=False, return_text=False):
+        """
+        Запуск основного анализатора:
+        - читаем страницу
+        - делаем из нее суп
+        - получаем список текстов и ссылок
+        - фильтруем при необходимости
+
+        :param to_filter: если True, полученные массив текстов отфильтруем
+        :param return_text: если True, вернуть результат (иначе его можно добыть по аттрибутам класса)
+        """
         self.__read_html()
         try:
             self.__make_soup()
@@ -152,33 +202,37 @@ class Page():
             return self.text_array
 
     def extract_table(self):
-
+        """
+        Извлечь все вероятные таблицы со страницы.
+        """
         tags = list(
             filter(lambda x: "bs4.element" not in x, map(get_second, self.text_array))
         )
-
         compressed_tags = compress_tags(tags)
         significant_tags = list(filter(lambda x: x[1] > 5, sorted(compressed_tags, key=lambda tup: -tup[1])))
         self.probable_tables = []
-        for tag in significant_tags:
+        for tag, _ in significant_tags:
+            print(tag)
             self.probable_tables.append(self.soup.select(tag))
 
 
-def save_text(text, dir, prefix, postfix):
-    file_name = join(dir, f'{prefix}_{postfix}.txt')
-    with open(file_name, 'w') as out_file:
-        out_file.write(text)
-    return file_name
-
-
 def main():
+    """
+    Тут происходит вся магия
+    """
+
+    print('Анализ страницы...')
+
+    # прочитать страницу
     main_page = Page(URL)
     try:
+        # извлечь всю инфу + отфильтровать грязный текст
         main_page.read_url_return_info(to_filter=True)
     except HtmlParseError as e:
         print(str(e))
         return
 
+    # выведем инфу об извлеченном тексте и сохраним информацию
     html_text = main_page.html_text
     plain_text = '\n'.join(list(map(get_third, main_page.text_array)))
     filtered_text = '\n'.join(list(map(get_third, main_page.filtered_text_array)))
@@ -186,7 +240,7 @@ def main():
     page_length = len(html_text)
     plain_text_length = len(plain_text)
     filtered_text_length = len(filtered_text)
-    print(f'Анализируемая страница: {URL}')
+    print(f'\nАнализируемая страница: {URL}')
     print(f'Длина html-страницы:\t\t\t{page_length}')
     print(f'Длина извлеченного текста:'
           f'\t\t{plain_text_length}'
@@ -197,20 +251,32 @@ def main():
     print()
 
     print('Сохранение html-текста...')
-    html_text_file = save_text(html_text, DIR, 'html', PREFIX_NAME)
+    html_text_file = save_text(html_text, DIR, 'html', POSTFIX_NAME)
     print(f'Html-текст сохранен в: {html_text_file}')
 
     print('Сохранение извлеченного текста...')
-    plain_text_file = save_text(plain_text, DIR, 'plain', PREFIX_NAME)
+    plain_text_file = save_text(plain_text, DIR, 'plain', POSTFIX_NAME)
     print(f'Извлеченный текст сохранен в: {plain_text_file}')
 
     print('Сохранение отфильтрованного текста...')
-    filtered_text_file = save_text(filtered_text, DIR, 'filtered', PREFIX_NAME)
+    filtered_text_file = save_text(filtered_text, DIR, 'filtered', POSTFIX_NAME)
     print(f'Отфильтрованный текст сохранен в: {filtered_text_file}')
 
-    count_DOM_ways = Counter(map(get_second, main_page.text_array))
+    # извлечем и сохраним таблицы
+    print()
+    print('Извлечение таблиц...')
+    main_page.extract_table()
+    tables = main_page.probable_tables
 
-    print(count_DOM_ways)
+    print()
+    print('Запись возможных таблиц...')
+    converter = bs2json()
+    for index, table in enumerate(tables):
+        json_text = str(converter.convertAll(table, join=True))
+        table_file = save_text(json_text, DIR, f'raw_table_{index}', POSTFIX_NAME, format='json')
+        print(f'html-текст с возможной таблицей сохранен в: {table_file}')
+
+    print('Спасибо за пользование тулом!\nПодписывайтесь в соц сетях по нику:\n@TohaRhymes или @Toha_Rhymes')
 
 
 if __name__ == '__main__':
