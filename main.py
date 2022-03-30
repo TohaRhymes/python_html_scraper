@@ -1,3 +1,4 @@
+import argparse
 from urllib.request import urlopen
 from urllib.error import URLError
 from bs4 import BeautifulSoup
@@ -8,15 +9,13 @@ from os.path import join
 from collections import Counter
 
 ## HERE ARE THE PARAMETERS
-URL = 'https://news.mit.edu/'
-URL = 'https://www.ozon.ru/category/hokkey-11232/'  # url с которым будем работать
-POSTFIX_NAME = 'mit_save'
-POSTFIX_NAME = 'ozon_save'  # префикс для файла, в который сохранять будем
-ENCODING = 'utf-8'  # кодировка, e.g. ['utf-8', 'cp1251']
-N_TO_CROSS_CHECK = 8  # сколько ссылок мы возьмем для поиска похожих
-PAGES_DELETE_CUTOFF = 0.7  # удалить текст, который представлен в такой части страниц
-SAME_DELETE_CUTOFF = 4  # удалить текст, который встречается на странице больше чем это число раз (для кнопок и тд)
-DIR = 'data/'
+URL = None
+POSTFIX_NAME = None
+DIR = None
+ENCODING = None
+N_TO_CROSS_CHECK = None
+PAGES_DELETE_CUTOFF = None
+SAME_DELETE_CUTOFF = None
 
 ## HERE CODE STARTS
 
@@ -216,10 +215,54 @@ class Page():
             self.probable_tables.append(self.soup.select(tag))
 
 
+def parse_args():
+    """
+    Parse command line arguments.
+    """
+    parser = argparse.ArgumentParser()
+    # URL = 'https://news.mit.edu/'
+    # URL = 'https://www.ozon.ru/category/hokkey-11232/'
+    #     POSTFIX_NAME = 'mit_save'
+    #     POSTFIX_NAME = 'ozon_save'
+    parser.add_argument("-url", "--url", help="URL с которым будем работать.", type=str, required=True)
+    parser.add_argument("-dir", '--dir', help="Директория, в которую сохранять файлв", type=str, default='./')
+    parser.add_argument("-out", "--postfix_name", help="Постфикс имени файла, в который будем сохранять текст.",
+                        type=str)
+    parser.add_argument("-enc", "--encoding", help="Кодировка страницы, которую будем парсить", type=str,
+                        default='utf-8')
+
+    filtration_group = parser.add_argument_group("Параметры")
+    filtration_group.add_argument("-ncc", "--n_to_cross_check",
+                                  help="Сколько ссылок мы возьмем для поиска похожих (мусорных) кусков."
+                                       "0 <= ncc <= 15", type=int,
+                                  default=8)
+    filtration_group.add_argument("-pdc", "--pages_delete_cutoff",
+                                  help="Удалить текст, который представлен в такой части страниц."
+                                       "0 <= pdc <= 1", type=float,
+                                  default=0.75)
+    filtration_group.add_argument("-sdc", "--same_delete_cutoff",
+                                  help="Удалить текст, который встречается на странице больше,"
+                                       "чем это число раз (для кнопок и тд)."
+                                       "0 <= sdc",
+                                  type=int, default=4)
+    args = parser.parse_args()
+
+    ## HERE ARE THE PARAMETERS
+    URL = args.url
+    DIR = args.dir
+    POSTFIX_NAME = args.out
+    ENCODING = args.enc
+    N_TO_CROSS_CHECK = min(max(0, args.ncc), 15)
+    PAGES_DELETE_CUTOFF = min(max(0, args.pdc), 1)
+    SAME_DELETE_CUTOFF = max(0, args.sdc)
+
+
 def main():
     """
     Тут происходит вся магия
     """
+
+    parse_args()
 
     print('Анализ страницы...')
 
