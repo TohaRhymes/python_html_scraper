@@ -68,49 +68,39 @@ html-текст с возможной таблицей сохранен в: data
 @TohaRhymes или @Toha_Rhymes
 ```
 
-
 #### Вызов
 ```text
-python main.py -url https://www.ozon.ru/category/hokkey-11232/ -dir data/ -out ozon
+python main.py -url 'https://academy.yandex.ru/dataschool/course/machine-learning' -dir data/ -out shad
 ```
 #### Вывод:
 
 ```text
 Анализ страницы...
 
-Анализируемая страница: https://www.ozon.ru/category/hokkey-11232/
-Длина html-страницы:                    872178
-Длина извлеченного текста:              24860   (2.85%)
-Длина отфильтрованного текста:  12696   (1.46%)
+Анализируемая страница: https://academy.yandex.ru/dataschool/course/machine-learning
+Длина html-страницы:                    163631
+Длина извлеченного текста:              30833   (18.84%)
+Длина отфильтрованного текста:  29078   (17.77%)
 
 Сохранение html-текста...
-Html-текст сохранен в: data/html_ozon.txt
+Html-текст сохранен в: data/html_shad.txt
 Сохранение извлеченного текста...
-Извлеченный текст сохранен в: data/plain_ozon.txt
+Извлеченный текст сохранен в: data/plain_shad.txt
 Сохранение отфильтрованного текста...
-Отфильтрованный текст сохранен в: data/filtered_ozon.txt
+Отфильтрованный текст сохранен в: data/filtered_shad.txt
 
 Извлечение таблиц...
 
 Запись возможных таблиц...
-html-текст с возможной таблицей сохранен в: data/raw_table_0_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_1_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_2_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_3_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_4_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_5_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_6_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_7_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_8_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_9_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_10_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_11_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_12_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_13_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_14_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_15_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_16_ozon.json
-html-текст с возможной таблицей сохранен в: data/raw_table_17_ozon.json
+html-текст с возможной таблицей сохранен в: data/raw_table_0_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_1_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_2_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_3_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_4_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_5_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_6_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_7_shad.json
+html-текст с возможной таблицей сохранен в: data/raw_table_8_shad.json
 
 Спасибо за пользование тулом!
 Подписывайтесь в соц сетях по нику:
