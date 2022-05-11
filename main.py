@@ -1,5 +1,5 @@
 import argparse
-from typing import Any, List, Set, Tuple
+from typing import Any, List, Tuple
 from urllib.request import urlopen
 from urllib.error import URLError
 from bs4 import BeautifulSoup
