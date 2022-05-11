@@ -1,4 +1,5 @@
 import argparse
+from typing import Any, List, Set, Tuple
 from urllib.request import urlopen
 from urllib.error import URLError
 from bs4 import BeautifulSoup
@@ -22,29 +23,32 @@ SAME_DELETE_CUTOFF = None
 STOP_WORDS = ['style', 'script']
 
 
-def sort_by_similarity(cur_url):
-    """Отсортировать строчки по схожести с анализируемым URL'ом."""
+def sort_by_similarity(cur_url: str) -> float:
+    """
+        Нужен для сортировки строчке по схожести с анализируемым URL'ом.
+        Это по сути компаратор.
+    """
     return SequenceMatcher(None, cur_url, URL).ratio()
 
 
-def get_second(array):
+def get_second(array: list) -> Any:
     """Получить второй элемент в массиве"""
     return array[1]
 
 
-def get_third(array):
+def get_third(array: list) -> Any:
     """Получить третий элемент в массиве"""
     return array[2]
 
 
-def unflatten(list_of_lists):
+def unflatten(list_of_lists: List[list]) -> list:
     """
     Развернуть лист листов в лист
     """
     return [val for sublist in list_of_lists for val in sublist]
 
 
-def bfs(soup, depth=0):
+def bfs(soup: BeautifulSoup, depth: int = 0) -> (List[str], List[str]):
     """
     BFS на BeautifulSoup'ном дереве
     Код из:
@@ -78,7 +82,8 @@ class HtmlParseError(Exception):
     pass
 
 
-def compress_tags(tags):
+# def compress_tags(tags: List[str]) -> List[Tuple[str, int]]:
+def compress_tags(tags: List[str]) -> List[Tuple[str, int]]:
     count_neighbours = []
     prev_tag = tags[0]
     counter = 1
@@ -93,7 +98,7 @@ def compress_tags(tags):
     return count_neighbours
 
 
-def save_text(text, dir, prefix, postfix, format='txt'):
+def save_text(text: str, dir: str, prefix: str, postfix: str, format: str = 'txt') -> str:
     file_name = join(dir, f'{prefix}_{postfix}.{format}')
     with open(file_name, 'w') as out_file:
         out_file.write(text)
@@ -101,7 +106,7 @@ def save_text(text, dir, prefix, postfix, format='txt'):
 
 
 class Page():
-    def __init__(self, url, encoding='utf-8'):
+    def __init__(self, url: str, encoding: str = 'utf-8'):
         self.url = url  # ссылка, с которой работаем
         self.html_text = None  # сырой html-текст
         self.soup = None  # BS-объект
@@ -111,7 +116,7 @@ class Page():
         self.filtered_text_array = None  # отфильтрованный массив текстов
         self.probable_tables = None  # массив с возможными таблицами
 
-    def __read_html(self):
+    def __read_html__(self) -> str:
         """
         Служебная функция.
 
@@ -123,7 +128,7 @@ class Page():
             pass
         return self.html_text
 
-    def __make_soup(self):
+    def __make_soup__(self) -> BeautifulSoup:
         """
         Служебная функция.
 
@@ -134,7 +139,7 @@ class Page():
         self.soup = BeautifulSoup(self.html_text, "html.parser")  ## мб 'html5lib'
         return self.soup
 
-    def __extract_info(self):
+    def __extract_info__(self) -> (List[str], List[str]):
         """
         Служебная функция.
 
@@ -146,7 +151,7 @@ class Page():
         self.text_array, self.link_array = bfs(self.soup)
         return self.text_array, self.link_array
 
-    def __filter_common(self):
+    def __filter_common__(self) -> None:
         """
         Служебная функция.
 
@@ -167,7 +172,7 @@ class Page():
         self.filtered_text_array = list(
             filter(lambda text: get_third(text) not in all_texts_to_delete, self.text_array))
 
-    def __filter_garbage(self):
+    def __filter_garbage__(self) -> None:
         """
         Служебная функция.
 
@@ -180,7 +185,7 @@ class Page():
         self.filtered_text_array = list(
             filter(lambda text: get_third(text) not in texts_to_delete, self.filtered_text_array))
 
-    def read_url_return_info(self, to_filter=False, return_text=False):
+    def read_url_return_info(self, to_filter: bool = False, return_text: bool = False) -> List[str]:
         """
         Запуск основного анализатора:
         - читаем страницу
@@ -191,9 +196,9 @@ class Page():
         :param to_filter: если True, полученные массив текстов отфильтруем
         :param return_text: если True, вернуть результат (иначе его можно добыть по аттрибутам класса)
         """
-        self.__read_html()
+        self.__read_html__()
         try:
-            self.__make_soup()
+            self.__make_soup__()
         except TypeError:
             raise HtmlParseError('Ошибка чтения страницы...\nЕмае!')
         self.text_array, self.link_array = bfs(self.soup)
@@ -204,13 +209,13 @@ class Page():
         self.link_array = list(self.link_array)
 
         if to_filter:
-            self.__filter_common()
-            self.__filter_garbage()
+            self.__filter_common__()
+            self.__filter_garbage__()
 
         if return_text:
             return self.text_array
 
-    def extract_table(self):
+    def extract_table(self) -> None:
         """
         Извлечь все вероятные таблицы со страницы.
         """
@@ -224,7 +229,7 @@ class Page():
             self.probable_tables.append(self.soup.select(tag))
 
 
-def parse_args():
+def parse_args() -> None:
     """
     Parse command line arguments.
     """
